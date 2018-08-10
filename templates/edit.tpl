@@ -1,26 +1,29 @@
 {c2r-return-message}
-<div class="xs-spacer15 sm-spacer30"></div>
+<div class="spacer all-30"></div>
 <div class="row">
-	<div class="col-sm-4 col-md-4 sm-tacenter">
-		<img src="https://www.gravatar.com/avatar/{c2r-md5-mail}?s=300&r=g&d=mm" class="img-circle">
-		<div class="xs-spacer30 sm-spacer30"></div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tacenter">
+		<img src="https://www.gravatar.com/avatar/{c2r-md5-mail}?s=250&r=g&d=mm" class="rounded-circle">
+		<div class="spacer all-30"></div>
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 		<form method="post" name="form" id="form" action="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/remove/{c2r-user-id}" enctype="multipart/form-data">
 			<!-- CHECK IF DELETE FIELD-->
-			<div>
+			<div class="tacenter">
 				<div class="form-group">
 					<div class="checkbox">
 						<label>
-							<input name="inputRemove" id="inputRemove" type="checkbox" value="1" required>{c2r-lg-check-remove}
+							<input name="inputRemove" id="inputRemove" type="checkbox" value="1" required> {c2r-lg-check-remove}
 						</label>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-save pull-center" name="remove_btn" id="remove_btn">
-					<i class="fa fa-eraser" aria-hidden="true"></i><div class="xs-block15 sm-block15"></div>{c2r-lg-remove}
+				<button type="submit" class="btn btn-save btn-danger" name="remove_btn" id="remove_btn">
+					<i class="fas fa-trash-alt" aria-hidden="true"></i><span class="block all-15"></span>{c2r-lg-remove}
 				</button>
 			</div>
 		</form>
-	</div>
-	<div class="col-sm-8 col-md-8">
-		{c2r-form}
+		<div class="spacer all-30"></div>
+		<div class="row">
+			{c2r-form}
+		</div>
 	</div>
 </div>

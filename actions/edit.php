@@ -90,6 +90,8 @@ $form = bo3::c2r(
 		"lg-code" => $mdl_lang["edit"]["code"],
 		"lg-status" => $mdl_lang["edit"]["status"],
 		"btn-save" => $mdl_lang["edit"]["save"],
+		"lg-check-remove" => $mdl_lang["edit"]["sure"],
+		"lg-remove" => $mdl_lang["edit"]["remove"],
 
 		"owner-selected" => (isset($ownerSelected)) ? $ownerSelected : "",
 		"manager-selected" => (isset($managerSelected)) ? $managerSelected : "",
