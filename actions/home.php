@@ -19,7 +19,12 @@ if (count($user_list) != 0) {
 				"email" => $user->email,
 				"rank" => $user->rank,
 				"status" => $user->status,
-				"date" => $user->date
+				"date" => $user->date,
+				"lg-username-title" => $mdl_lang["list"]["username-title"],
+				"lg-email-title" => $mdl_lang["list"]["email-title"],
+				"lg-rank-title" => $mdl_lang["list"]["rank-title"],
+				"lg-status-title" => $mdl_lang["list"]["status-title"],
+				"lg-date-title" => $mdl_lang["list"]["date-title"]
 			],
 			$item_tpl
 		);
