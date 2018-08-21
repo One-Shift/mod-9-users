@@ -1,74 +1,102 @@
-<form class="w-100" method="post" name="form" id="form" enctype="multipart/form-data">
-	<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left">
-		<!--USERNAME FIELD-->
-		<div>
-			<div class="form-group">
-				<div class="spacer all-15"></div>
-				<label for="inputName">{c2r-lg-name}</label>
-				<input type="text" class="form-control" id="inputName" name="inputName" placeholder="" required>
+<form class="w-100" action="{c2r-path-bo}/{c2r-lg}/9-users/add/" method="post" name="form" id="form" enctype="multipart/form-data">
+	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active btn btn-success" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{c2r-lg-info}</a>
+		</li>
+		<span class="block all-15"></span>
+		<li class="nav-item">
+			<a class="nav-link btn btn-success" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{c2r-lg-auth}</a>
+		</li>
+	</ul>
+	<div class="tab-content" id="pills-tabContent">
+		<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+			<div class="row">
+				<div class="col">
+					<!--USERNAME FIELD-->
+					<div>
+						<div class="form-group">
+							<div class="spacer all-15"></div>
+							<label for="inputName">{c2r-lg-name}</label>
+							<input type="text" class="form-control" id="inputName" name="inputName">
+						</div>
+					</div>
+					<!--HIDDEN FIELD BECAUSE PASSWORD WAS AUTOCOMPLETING (the autocomplete="off" rule was not being respected on firefox)-->
+					<input type="text" style="display:none">
+				</div>
+				<div class="col">
+					<!--EMAIL FIELD-->
+					<div>
+						<div class="form-group">
+							<div class="spacer all-15"></div>
+							<label for="inputEmail">{c2r-lg-email}</label>
+							<input type="email" class="form-control" id="inputEmail" name="inputEmail">
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<!--PASSWORD FIELD-->
-		<div>
-			<div class="form-group">
-				<div class="spacer all-15"></div>
-				<label for="inputPass">{c2r-lg-pass}</label>
-				<input type="password" class="form-control" id="inputPass" name="inputPass" placeholder="" required>
+			<div class="spacer all-15"></div>
+			<div class="row">
+				<div class="col">
+					<!-- RANK FIELD-->
+					<div>
+						<div class="form-group">
+							<div class="spacer all-15"></div>
+							<label for="inputRank">{c2r-lg-rank}</label>
+							<select class="form-control" id="inputRank" name="inputRank">
+								<option value="owner">{c2r-lg-owner}</option>
+								<option value="manager">{c2r-lg-manager}</option>
+								<option value="member" selected>{c2r-lg-member}</option>
+							</select>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<!-- RANK FIELD-->
-		<div>
-			<div class="form-group">
-				<div class="spacer all-15"></div>
-				<label for="inputRank">{c2r-lg-rank}</label>
-				<select class="form-control" id="inputRank" name="inputRank">
-					<option value="{c2r-lg-owner-value}">{c2r-lg-owner}</option>
-					<option value="{c2r-lg-manager-value}">{c2r-lg-manager}</option>
-					<option value="{c2r-lg-member-value}" selected>{c2r-lg-member}</option>
-				</select>
-			</div>
-		</div>
-	</div>
-	<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left">
-		<!--EMAIL FIELD-->
-		<div>
-			<div class="form-group">
-				<div class="spacer all-15"></div>
-				<label for="inputEmail">{c2r-lg-email}</label>
-				<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="" required>
+			<div class="spacer all-30"></div>
+			<div class="row">
+				<div class="col">
+					{c2r-other-info}
+				</div>
 			</div>
 		</div>
 
-		<!--PASSWORD CONFIRM FIELD-->
-		<div>
-			<div class="form-group">
-				<div class="spacer all-15"></div>
-				<label for="inputConfirm">{c2r-lg-confirm}</label>
-				<input type="password" class="form-control" id="inputConfirm" name="inputConfirm" placeholder="" required>
-			</div>
-		</div>
-		<!-- CODE FIELD-->
-		<div>
-			<div class="form-group">
-				<div class="spacer all-15"></div>
-				<label for="inputCode">{c2r-lg-code}</label>
-				<textarea class="form-control" rows="1" name="inputCode" id="inputCode"></textarea>
-			</div>
-		</div>
-		<div class="spacer all-30"></div>
-	</div>
-	<!-- SATUS FIELD-->
-	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tacenter">
-		<div class="form-group">
-			<div class="checkbox">
-				<input name="inputStatus" value="0" type="hidden">
-				<label><input name="inputStatus" id="inputStatus" type="checkbox" value="1"> {c2r-lg-status}</label>
+		<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+			<div class="row">
+				<div class="col">
+					<!--NEW PASSWORD FIELD-->
+					<div>
+						<div class="form-group">
+							<div class="spacer all-15"></div>
+							<label for="inputNewpass">{c2r-lg-pass}</label>
+							<input type="password" class="form-control" id="inputNewpass" name="inputNewpass" autocomplete="off">
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<!--NEW PASSWORD CONFIRM FIELD-->
+					<div>
+						<div class="form-group">
+							<div class="spacer all-15"></div>
+							<label for="inputConfirm">{c2r-lg-confirm}</label>
+							<input type="password" class="form-control" id="inputConfirm" name="inputConfirm" autocomplete="off">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- SUBMIT BUTTON -->
-	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tacenter">
-		<div class="spacer all-30"></div>
-		<button type="submit" class="btn btn-save btn-success" name="save" id="save"><i class="fas fa-save" aria-hidden="true"></i><div class="block all-15"></div>{c2r-btn-save}</button>
+	<div class="row">
+		<div class="col taleft">
+			<div class="form-group">
+				<div class="spacer all-30"></div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="inputStatus" id="inputStatus" {c2r-status-checked}> {c2r-lg-status}</label>
+				</div>
+			</div>
+		</div>
+		<div class="col taright">
+			<div class="spacer all-30"></div>
+			<button type="submit" class="btn btn-save btn-success" name="save" id="save"><i class="fas fa-save" aria-hidden="true"></i><span class="block all-15"></span>{c2r-btn-save}</button>
+			<div class="spacer all-30"></div>
+		</div>
 	</div>
 </form>

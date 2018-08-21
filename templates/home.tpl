@@ -5,6 +5,16 @@
 			<i class="fas fa-plus" aria-hidden="true"></i>
 			<div class="block all-15"></div>{c2r-lg-add-btn}
 		</a>
+		<div class="block all-15"></div>
+		<a href="{c2r-path-bo}/{c2r-lg}/9-users/fields/" class="btn btn-add btn-success" role="button">
+			<i class="fas fa-address-card" aria-hidden="true"></i>
+			<div class="block all-15"></div>{c2r-lg-fields-btn}
+		</a>
+		<div class="block all-15"></div>
+		<a href="{c2r-path-bo}/{c2r-lg}/9-users/logs/" class="btn btn-add btn-success" role="button">
+			<i class="fas fa-eye" aria-hidden="true"></i>
+			<div class="block all-15"></div>{c2r-lg-logs-btn}
+		</a>
 		<div class="spacer all-15"></div>
 	</div>
 </div>
@@ -12,3 +22,5 @@
 	{c2r-home-list}
 </div>
 <div class="spacer all-30"></div>
+
+<link rel="stylesheet" href="{c2r-module-path}site-assets/css/style.css">

@@ -1,0 +1,54 @@
+.innerBox {
+	padding: 15px;
+}
+
+.card-title {
+	margin-bottom: 0;
+	padding: 5px;
+}
+
+.card-title h5 {
+	max-width: 90%;
+}
+
+.card-content {
+	padding: 5px;
+}
+
+.bo-box {
+	position: absolute;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: height 0.35s ease;
+	border: 0;
+}
+
+.closeBox {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: #fff;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1;
+	text-shadow: 0 1px 0 #fff;
+	opacity: 1;
+    cursor: pointer;
+	padding: 0;
+	background-color: transparent;
+	border: 0;
+	-webkit-appearance: none;
+	outline: 0;
+	outline: none !important;
+	box-shadow: none;
+}
+
+.btn-edit {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

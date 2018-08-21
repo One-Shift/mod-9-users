@@ -1,6 +1,6 @@
-{c2r-return-message}
-
 <div class="spacer all-30"></div>
 <div class="row">
-	{c2r-adduser-form}
+	<div class="col-12">
+		{c2r-content}
+	</div>
 </div>

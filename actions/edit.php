@@ -7,6 +7,10 @@ $user->setId($id);
 
 $userData = $user->returnOneUser();
 
+if($userData->rank == "owner" && $authData["rank"] != "owner") {
+	header("Location: {$cfg->system->path_bo}/{$lg_s}/9-users/");
+}
+
 if ($userData->rank == "owner") {
 	$rank = "Owner";
 	$ownerSelected = "selected";
@@ -31,7 +35,9 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 		$user->setUsername($_POST["inputName"]);
 		$user->setEmail($_POST["inputEmail"]);
 		$user->setRank(strtolower($_POST['inputRank']));
-		$user->setCode($_POST["inputCode"]);
+		$user->setCode(
+			(isset($_POST["info"]) && !empty($_POST["info"])) ? json_encode($_POST["info"], JSON_UNESCAPED_UNICODE) : ""
+		);
 		$user->setStatus($_POST["inputStatus"]);
 		$user->setUserKey($userData->user_key);
 		$user->setDate($userData->date);
@@ -76,6 +82,31 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 	}
 }/*Verifies if "save" button was clicked - end*/
 
+if(!empty($userData->code)) {
+	$infos = json_decode($userData->code);
+}
+
+$fields = user::returnFields();
+
+if(!empty($fields)) {
+	foreach ($fields as $f => $field) {
+		if(!isset($list)) {
+			$list = "";
+			$item_tpl = bo3::mdl_load("templates-e/edit/item.tpl");
+		}
+
+		$field_name = strtolower($field->name);
+
+		$list .= bo3::c2r([
+			"name" => $field->name,
+			"lg-name" => $mdl_lang["label"]["{$field_name}"],
+			"value" => (isset($infos) && !empty($infos->{$field_name})) ? $infos->{$field_name} : "",
+			"ph" => $mdl_lang["placeholder"]["{$field_name}"],
+			"required" => ($infos->required) ? "required" : ""
+		], $item_tpl);
+	}
+}
+
 /* USER CHANGES - ENDS */
 $form = bo3::c2r(
 	[
@@ -92,6 +123,8 @@ $form = bo3::c2r(
 		"btn-save" => $mdl_lang["edit"]["save"],
 		"lg-check-remove" => $mdl_lang["edit"]["sure"],
 		"lg-remove" => $mdl_lang["edit"]["remove"],
+		"lg-auth" => $mdl_lang["edit"]["auth"],
+		"lg-info" => $mdl_lang["edit"]["info"],
 
 		"owner-selected" => (isset($ownerSelected)) ? $ownerSelected : "",
 		"manager-selected" => (isset($managerSelected)) ? $managerSelected : "",
@@ -100,7 +133,8 @@ $form = bo3::c2r(
 		"username" => htmlspecialchars($userData->username),
 		"email" => htmlspecialchars($userData->email),
 		"code" => htmlspecialchars($userData->code),
-		"status-checked" => ($userData->status) ? "checked" : ""
+		"status-checked" => ($userData->status) ? "checked" : "",
+		"other-info" => (isset($list)) ? $list : ""
 	],
 	bo3::mdl_load("templates-e/edit/form.tpl")
 );

@@ -18,7 +18,8 @@ if (count($user_list) != 0) {
 				"username" => $user->username,
 				"email" => $user->email,
 				"rank" => $user->rank,
-				"status" => $user->status,
+				"access" => ($user->rank == "owner" && $authData["rank"] != "owner") ? "d-none" : "",
+				"status" => ($user->status) ? "Active" : "Inactive",
 				"date" => $user->date,
 				"lg-username-title" => $mdl_lang["list"]["username-title"],
 				"lg-email-title" => $mdl_lang["list"]["email-title"],
@@ -36,6 +37,8 @@ if (count($user_list) != 0) {
 $mdl = bo3::c2r(
 	[
 		"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+		"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+		"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
 		"lg-gravatar-title" => $mdl_lang["list"]["gravatar-title"],
 		"lg-username-title" => $mdl_lang["list"]["username-title"],
 		"lg-email-title" => $mdl_lang["list"]["email-title"],
