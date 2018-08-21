@@ -99,10 +99,10 @@ if(!empty($fields)) {
 
 		$list .= bo3::c2r([
 			"name" => $field->name,
-			"lg-name" => $mdl_lang["label"]["{$field_name}"],
+			"lg-name" => (isset($mdl_lang["label"]["{$field_name}"])) ? $mdl_lang["label"]["{$field_name}"] : "",
 			"value" => (isset($infos) && !empty($infos->{$field_name})) ? $infos->{$field_name} : "",
-			"ph" => $mdl_lang["placeholder"]["{$field_name}"],
-			"required" => ($infos->required) ? "required" : ""
+			"ph" => (isset($mdl_lang["placeholder"]["{$field_name}"])) ? $mdl_lang["placeholder"]["{$field_name}"] : "",
+			"required" => ($field->required) ? "required" : ""
 		], $item_tpl);
 	}
 }

@@ -12,7 +12,7 @@ if(isset($_POST["submit"])) {
 			"text",
 			$_POST["sort"],
 			(isset($_POST["required"])) ? TRUE : FALSE,
-			(isset($_POST["Status"])) ? TRUE : FALSE
+			(isset($_POST["status"])) ? TRUE : FALSE
 		)
 	) {
 		$message = $mdl_lang["fields"]["success"];
