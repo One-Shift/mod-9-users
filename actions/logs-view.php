@@ -10,7 +10,9 @@ if(isset($id) && !empty($id)) {
 	$user->setId($log->user_id);
 	$user = $user->returnOneUser();
 
-	$details = json_decode(file_get_contents("http://ipinfo.io/{$log->ip}/json"));
+	$ip = json_decode($log->description);
+
+	$details = json_decode(file_get_contents("http://ipinfo.io/{$ip->ip}/json"));
 
 	if(!empty($details)) {
 		foreach ($details as $i => $item) {

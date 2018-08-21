@@ -10,13 +10,10 @@
 					<div class="block col-sm-8 col-md-8 col-lg-2">
 						<strong>{c2r-user}</strong>
 					</div>
-					<div class="block col-sm-6 col-md-6 col-lg-3">
+					<div class="block col-sm-6 col-md-6 col-lg-5">
 						<strong>{c2r-ip}</strong>
 					</div>
-					<div class="block col-sm-6 col-md-6 col-lg-3 tacenter">
-						<strong>{c2r-code}</strong>
-					</div>
-					<div class="block col-sm-12 col-md-12 col-lg-3 tacenter">
+					<div class="block col-sm-12 col-md-12 col-lg-4 tacenter">
 						<strong>{c2r-date}</strong>
 					</div>
 				</div>

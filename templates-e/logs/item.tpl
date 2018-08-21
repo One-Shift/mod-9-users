@@ -7,13 +7,10 @@
 			<div class="box col-sm-8 col-md-8 col-lg-2">
 				<p>{c2r-user}</p>
 			</div>
-			<div class="box col-sm-6 col-md-6 col-lg-3">
+			<div class="box col-sm-6 col-md-6 col-lg-5">
 				<p><strong>{c2r-ip}</strong></p>
 			</div>
-			<div class="box col-sm-6 col-md-6 col-lg-3">
-				<p>{c2r-code}</p>
-			</div>
-			<div class="box date col-sm-12 col-md-12 col-lg-3">
+			<div class="box date col-sm-6 col-md-6 col-lg-4">
 				<p>{c2r-date}</p>
 			</div>
 		</div>
