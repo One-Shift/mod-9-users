@@ -42,7 +42,22 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 		$user->setUserKey($userData->user_key);
 		$user->setDate($userData->date);
 		$user->setDateUpdate();
-		$user->setOldPassword($userData->password);
+
+		if (isset($_POST["inputNewpass"]) && !empty($_POST["inputNewpass"])) {
+			if (isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && $_POST["inputConfirm"] == $_POST["inputNewpass"]) {
+				$user->setPassword($_POST["inputNewpass"]);
+			} else {
+				$returnMessage = bo3::c2r(
+					[
+						"message-type" => "danger",
+						"lg-message" => $mdl_lang["edit"]["no-match"]
+					],
+					$message_tpl
+				);
+			}
+		} else {
+			$user->setOldPassword($userData->password);
+		}
 
 		if ($user->update()) {
 			$userData = $user->returnOneUser();
@@ -65,22 +80,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 		}
 	}
 
-/*PASSWORD*/
-
-	if (isset($_POST["inputNewpass"]) && !empty($_POST["inputNewpass"])) {
-		if (isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && $_POST["inputConfirm"] == $_POST["inputNewpass"]) {
-			$user->setPassword($_POST["inputNewpass"]);
-		} else {
-			$returnMessage = bo3::c2r(
-				[
-					"message-type" => "danger",
-					"lg-message" => $mdl_lang["edit"]["no-match"]
-				],
-				$message_tpl
-			);
-		}
-	}
-}/*Verifies if "save" button was clicked - end*/
+}
 
 if(!empty($userData->code)) {
 	$infos = json_decode($userData->code);
@@ -99,10 +99,10 @@ if(!empty($fields)) {
 
 		$list .= bo3::c2r([
 			"name" => $field->name,
-			"lg-name" => (isset($mdl_lang["label"]["{$field_name}"])) ? $mdl_lang["label"]["{$field_name}"] : "",
+			"lg-name" => $mdl_lang["label"]["{$field_name}"],
 			"value" => (isset($infos) && !empty($infos->{$field_name})) ? $infos->{$field_name} : "",
-			"ph" => (isset($mdl_lang["placeholder"]["{$field_name}"])) ? $mdl_lang["placeholder"]["{$field_name}"] : "",
-			"required" => ($field->required) ? "required" : ""
+			"ph" => $mdl_lang["placeholder"]["{$field_name}"],
+			"required" => ($infos->required) ? "required" : ""
 		], $item_tpl);
 	}
 }
