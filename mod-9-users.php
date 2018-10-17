@@ -7,7 +7,7 @@ $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
 $cfg->mdl->version = "0.0.5";
 $cfg->mdl->developer = "João Santos & Carlos Santos";
 $cfg->mdl->contact = "jfnsatos7@gmail.com & carlos@one-shift.com";
-$cfg->mdl->dbTables = ["users", "trash"];
+$cfg->mdl->dbTables = ["9_users", "9_users_fields", "trash"];
 
 // load language for module
 if (file_exists("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini")) {
@@ -34,6 +34,6 @@ if ($a == null && $a != "install") {
 		include $pg_file;
 	} else {
 		// if doesn't exist an action response, system sent you to 404
-		header("Location: {$cfg->system->path_bo}/0/{$lg_s}/404/");
+		header("Location: {$cfg->system->path_bo}/{$lg_s}/404/");
 	}
 }

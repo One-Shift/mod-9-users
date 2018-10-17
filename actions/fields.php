@@ -1,10 +1,10 @@
 <?php
 
-$fields = user::returnAllFields();
+$fields = c9_user::returnAllFields();
 
-if(!empty($fields)) {
+if (!empty($fields)) {
 	foreach ($fields as $i => $item) {
-		if(!isset($list)) {
+		if (!isset($list)) {
 			$list = "";
 			$item_tpl = bo3::mdl_load("templates-e/fields/item.tpl");
 		}
@@ -24,19 +24,16 @@ if(!empty($fields)) {
 	}
 }
 
-$mdl = bo3::c2r(
-	[
-		"add-field" => $mdl_lang["fields"]["add"],
-		"name" => $mdl_lang["fields"]["name"],
-		"value" => $mdl_lang["fields"]["value"],
-		"type" => $mdl_lang["fields"]["type"],
-		"required" => $mdl_lang["fields"]["required"],
-		"sort" => $mdl_lang["fields"]["sort"],
-		"status" => $mdl_lang["fields"]["status"],
-		"date" => $mdl_lang["fields"]["date"],
-		"list" => (isset($list)) ? $list : $mdl_lang["fields"]["no-results"]
-	],
-	bo3::mdl_load("templates/fields.tpl")
-);
+$mdl = bo3::c2r([
+	"add-field" => $mdl_lang["fields"]["add"],
+	"name" => $mdl_lang["fields"]["name"],
+	"value" => $mdl_lang["fields"]["value"],
+	"type" => $mdl_lang["fields"]["type"],
+	"required" => $mdl_lang["fields"]["required"],
+	"sort" => $mdl_lang["fields"]["sort"],
+	"status" => $mdl_lang["fields"]["status"],
+	"date" => $mdl_lang["fields"]["date"],
+	"list" => (isset($list)) ? $list : $mdl_lang["fields"]["no-results"]
+], bo3::mdl_load("templates/fields.tpl"));
 
 include "pages/module-core.php";

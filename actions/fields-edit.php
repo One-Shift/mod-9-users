@@ -1,23 +1,20 @@
 <?php
 
-if(isset($id) && !empty($id)) {
+if (isset($id) && !empty($id)) {
 	$breadcrumb = [
 		["name" => "Fields", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/fields/"]
 	];
 
-	$field = user::returnOneField($id);
+	$field = c9_user::returnOneField($id);
 
-	if(isset($_POST["submit"])) {
-
-		if(
-			user::updateField(
-				$_POST["name"],
-				$_POST["value"],
-				$_POST["sort"],
-				(isset($_POST["required"])) ? TRUE : FALSE,
-				(isset($_POST["status"])) ? TRUE : FALSE,
-				$id
-			)
+	if (isset($_POST["submit"])) {
+		if (c9_user::updateField(
+			$_POST["name"],
+			$_POST["value"],
+			$_POST["sort"],
+			(isset($_POST["required"])) ? TRUE : FALSE,
+			(isset($_POST["status"])) ? TRUE : FALSE,
+			$id)
 		) {
 			$message = $mdl_lang["fields"]["success"];
 		} else {
@@ -28,7 +25,6 @@ if(isset($id) && !empty($id)) {
 			"content" => $message
 		], bo3::mdl_load("templates/result.tpl"));
 	} else {
-
 		$mdl = bo3::c2r([
 			"name" => $mdl_lang["fields"]["name"],
 			"value" => $mdl_lang["fields"]["value"],

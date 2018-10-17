@@ -1,9 +1,35 @@
-INSERT INTO `{c2r-prefix}_modules` (`folder`, `sort`) VALUES ("{c2r-mod-folder}", 0);
+INSERT INTO `{c2r-prefix}_modules` (`folder`, `code`, `sort`) VALUES ("{c2r-mod-folder}", '{\"fa-icon\":\"fa-users\",\"img\":\"\",\"sub-items\":{\"List\":{\"url\":\"\"},\"Add user\":{\"url\":\"add\"},\"Logs\":{\"url\":\"logs\"}},\"sidebar\":true,\"dropdown\":false}', 0);
 
-CREATE TABLE IF NOT EXISTS `{c2r-prefix}_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `f_1` varchar(255) NOT NULL,
-  `f_2` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `{c2r-prefix}_9_users` (
+	`id` int(11) NOT NULL,
+	`username` varchar(255) DEFAULT NULL,
+	`password` varchar(255) DEFAULT NULL,
+	`rank` enum('owner','manager','member') DEFAULT 'member',
+	`email` varchar(255) DEFAULT NULL,
+	`code` text,
+	`custom_css` text NOT NULL,
+	`user_key` text,
+	`status` tinyint(1) NOT NULL DEFAULT '0',
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `{c2r-prefix}_9_users_fields` (
+	`id` int(11) NOT NULL,
+	`name` text NOT NULL,
+	`value` text NOT NULL,
+	`type` text NOT NULL,
+	`required` tinyint(1) NOT NULL DEFAULT '0',
+	`sort` int(11) NOT NULL,
+	`status` tinyint(1) NOT NULL DEFAULT '0',
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `{c2r-prefix}_9_users`
+	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+ALTER TABLE `{c2r-prefix}_9_users_fields`
+	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;

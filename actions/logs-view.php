@@ -1,12 +1,11 @@
 <?php
 
-if(isset($id) && !empty($id)) {
-
-	$log = new user();
+if (isset($id) && !empty($id)) {
+	$log = new c9_user();
 	$log->setId($id);
 	$log = $log->returnLog();
 
-	$user = new user();
+	$user = new c9_user();
 	$user->setId($log->user_id);
 	$user = $user->returnOneUser();
 
@@ -14,9 +13,9 @@ if(isset($id) && !empty($id)) {
 
 	$details = json_decode(file_get_contents("http://ipinfo.io/{$ip->ip}/json"));
 
-	if(!empty($details)) {
+	if (!empty($details)) {
 		foreach ($details as $i => $item) {
-			if(!isset($list)) {
+			if (!isset($list)) {
 				$list = "";
 				$item_tpl = bo3::mdl_load("templates-e/logs/view.tpl");
 			}
@@ -32,17 +31,13 @@ if(isset($id) && !empty($id)) {
 		["name" => "Logs", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/logs/"]
 	];
 
-	$mdl = bo3::c2r(
-		[
-			"md5-email" => md5($user->email),
-			"username" => $user->username,
-			"email" => $user->email,
-			"rank" => $user->rank,
-			"object" => (isset($list)) ? $list : ""
-		],
-		bo3::mdl_load("templates/logs-view.tpl")
-	);
-
+	$mdl = bo3::c2r([
+		"md5-email" => md5($user->email),
+		"username" => $user->username,
+		"email" => $user->email,
+		"rank" => $user->rank,
+		"object" => (isset($list)) ? $list : ""
+	], bo3::mdl_load("templates/logs-view.tpl"));
 } else {
 	header('Location: {$cfg->system->path_bo}/{$lg_s}/9-users/logs/');
 }

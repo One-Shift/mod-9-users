@@ -1,5 +1,6 @@
 <?php
-$user = new user();
+
+$user = new c9_user();
 
 if (isset($_POST["inputRemove"])) {
 	$user->setId($id);

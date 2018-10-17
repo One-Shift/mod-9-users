@@ -1,13 +1,14 @@
 <?php
 
-$logs = new user();
+$logs = new c9_user();
 $logs = $logs->returnLogs();
 
-if(!empty($logs)) {
+if (!empty($logs)) {
 	foreach ($logs as $i => $log) {
-		if(!isset($logs_list))
-		$logs_list = "";
-		$item_tpl = bo3::mdl_load("templates-e/logs/item.tpl");
+		if (!isset($logs_list)) {
+			$logs_list = "";
+			$item_tpl = bo3::mdl_load("templates-e/logs/item.tpl");
+		}
 
 		$description = json_decode($log->description);
 
@@ -20,15 +21,12 @@ if(!empty($logs)) {
 	}
 }
 
-$mdl = bo3::c2r(
-	[
-		"user" => $mdl_lang["logs"]["user"],
-		"ip" => $mdl_lang["logs"]["ip"],
-		"date" => $mdl_lang["logs"]["date"],
-		"list" => (isset($logs_list)) ? $logs_list : "",
-		"but-view" => $mdl_lang["logs"]["but-view"]
-	],
-	bo3::mdl_load("templates/logs.tpl")
-);
+$mdl = bo3::c2r([
+	"user" => $mdl_lang["logs"]["user"],
+	"ip" => $mdl_lang["logs"]["ip"],
+	"date" => $mdl_lang["logs"]["date"],
+	"list" => (isset($logs_list)) ? $logs_list : "",
+	"but-view" => $lang["logs"]["but-view"]
+], bo3::mdl_load("templates/logs.tpl"));
 
 include "pages/module-core.php";

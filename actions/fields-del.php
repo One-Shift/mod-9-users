@@ -1,15 +1,16 @@
 <?php
+
 $breadcrumb = [
 	["name" => "Fields", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/fields/"]
 ];
 
 if (isset($id) && !empty($id)) {
 	// Return all category info
-	$field = new user();
+	$field = new c9_user();
 	$toReturn = "";
 
 	if (isset($_POST["submit"])) {
-		if (user::deleteField($id)) {
+		if (c9_user::deleteField($id)) {
 			$toReturn = $mdl_lang["fields"]["success-del"];
 		} else {
 			$toReturn =  $mdl_lang["fields"]["failure-del"];
@@ -17,18 +18,15 @@ if (isset($id) && !empty($id)) {
 	} else {
 		$field = $field->returnOneField($id);
 
-		$toReturn = bo3::c2r(
-			[
-				"id" => $id,
+		$toReturn = bo3::c2r([
+			"id" => $id,
 
-				"phrase" => $mdl_lang["fields"]["phrase"],
-				"title" => $field->name,
+			"phrase" => $mdl_lang["fields"]["phrase"],
+			"title" => $field->name,
 
-				"del" => $mdl_lang["fields"]["button-del"],
-				"cancel" => $mdl_lang["fields"]["button-cancel"]
-			],
-			bo3::mdl_load("templates-e/fields/form.tpl")
-		);
+			"del" => $mdl_lang["fields"]["button-del"],
+			"cancel" => $mdl_lang["fields"]["button-cancel"]
+		], bo3::mdl_load("templates-e/fields/form.tpl"));
 	}
 
 	$mdl = bo3::c2r(["content" => $toReturn], bo3::mdl_load("templates/result.tpl"));

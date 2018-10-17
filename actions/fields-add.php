@@ -5,16 +5,14 @@ if(isset($_POST["submit"])) {
 		["name" => "Fields", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/fields/"]
 	];
 
-	if(
-		user::insertField(
-			$_POST["name"],
-			$_POST["value"],
-			"text",
-			$_POST["sort"],
-			(isset($_POST["required"])) ? TRUE : FALSE,
-			(isset($_POST["status"])) ? TRUE : FALSE
-		)
-	) {
+	if (c9_user::insertField(
+		$_POST["name"],
+		$_POST["value"],
+		"text",
+		$_POST["sort"],
+		(isset($_POST["required"])) ? TRUE : FALSE,
+		(isset($_POST["Status"])) ? TRUE : FALSE
+	)) {
 		$message = $mdl_lang["fields"]["success"];
 	} else {
 		$message = $mdl_lang["fields"]["Failure"];
