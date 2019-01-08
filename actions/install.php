@@ -22,6 +22,7 @@ if (isset($_POST["submitInstall"]) && c9_user::isOwner($authData)) {
 	}
 } else {
 	$mdl = bo3::c2r([
+		"changelog" => bo3::mdl_load("templates/changelog.tpl"),
 		"lg-install" => $lang["install"]["question"],
 		"lg-yes" => $lang["common"]["a-yes"],
 		"lg-no" => $lang["common"]["a-no"]
