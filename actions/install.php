@@ -1,14 +1,14 @@
 <?php
 
 if (isset($_POST["submitInstall"]) && c9_user::isOwner($authData)) {
-	$db = bo3::c2r([
+	$sql = bo3::c2r([
 		"mod-name" => $cfg->mdl->name,
 		"mod-folder" => $cfg->mdl->folder,
 		"prefix" => $cfg->db->prefix,
 	], bo3::mdl_load("db/install.sql"));
 
-	if ($mysqli->multi_query($db) != FALSE) {
-		while ($mysqli->more_results() && $mysqli->next_result()) {;} // flush multi_queries
+	if ($db->multi_query($sql) != FALSE) {
+		while ($db->more_results() && $db->next_result()) {;} // flush multi_queries
 
 		copy("modules/{$cfg->mdl->folder}/install/class.1-user.php", "class/class.1-user.php");
 

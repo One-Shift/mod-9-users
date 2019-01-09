@@ -1,13 +1,13 @@
 <?php
 
 if (isset($_POST["submitUninstall"]) && c9_user::isOwner($authData)) {
-	$db = bo3::c2r([
+	$sql = bo3::c2r([
 		"mod-folder" => $cfg->mdl->folder,
 		"prefix" => $cfg->db->prefix
 	], bo3::mdl_load("db/uninstall.sql"));
 
-	if ($mysqli->multi_query($db) != FALSE) {
-		while ($mysqli->more_results() && $mysqli->next_result()) {;} // flush multi_queries
+	if ($db->multi_query($sql) != FALSE) {
+		while ($db->more_results() && $db->next_result()) {;} // flush multi_queries
 
 		unlink("class/class.9-user.php");
 
