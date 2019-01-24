@@ -19,6 +19,7 @@ CREATE TABLE `{c2r-prefix}_9_users_fields` (
 	`name` text NOT NULL,
 	`value` text NOT NULL,
 	`type` text NOT NULL,
+	`placeholder` text NOT NULL,
 	`required` tinyint(1) NOT NULL DEFAULT '0',
 	`sort` int(11) NOT NULL,
 	`status` tinyint(1) NOT NULL DEFAULT '0',

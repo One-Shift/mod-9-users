@@ -2,24 +2,33 @@
 
 if(isset($_POST["submit"])) {
 	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/fields/"]
+		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
 	];
 
 	if (c9_user::insertField(
 		$_POST["name"],
 		$_POST["value"],
+		$_POST["placeholder"],
 		"text",
 		$_POST["sort"],
 		(isset($_POST["required"])) ? TRUE : FALSE,
-		(isset($_POST["Status"])) ? TRUE : FALSE
+		(isset($_POST["status"])) ? TRUE : FALSE
 	)) {
 		$message = $mdl_lang["fields"]["success"];
+		$status = TRUE;
 	} else {
 		$message = $mdl_lang["fields"]["Failure"];
+		$status = FALSE;
 	}
 
 	$mdl = bo3::c2r([
-		"content" => $message
+		"content" => $message,
+		"back-list" => $mdl_lang["result"]["back-list"],
+		"new-user" => $mdl_lang["result"]["new-user"],
+		"edit-mode" => $mdl_lang["result"]["edit-mode"],
+		"add-active" => $a != "add" ? "d-none" : "",
+		"edit-active" => $a != "edit" ? "d-none" : "",
+		"status" => ($status == TRUE) ? "success" : "danger"
 	], bo3::mdl_load("templates/result.tpl"));
 
 	header("Refresh:5; url={$cfg->system->path_bo}/{$lg_s}/9-users/fields/");
@@ -27,12 +36,13 @@ if(isset($_POST["submit"])) {
 } else {
 
 	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/fields/"]
+		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
 	];
 
 	$mdl = bo3::c2r([
 		"name" => $mdl_lang["fields"]["name"],
 		"value" => $mdl_lang["fields"]["value"],
+		"placeholder" => $mdl_lang["fields"]["placeholder"],
 		"type" => $mdl_lang["fields"]["type"],
 		"required" => $mdl_lang["fields"]["required"],
 		"sort" => $mdl_lang["fields"]["sort"],

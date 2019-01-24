@@ -28,7 +28,7 @@ if (isset($id) && !empty($id)) {
 	}
 
 	$breadcrumb = [
-		["name" => "Logs", "link" => "{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/logs/"]
+		["name" => "Logs", "link" => "{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/logs/"]
 	];
 
 	$mdl = bo3::c2r([
