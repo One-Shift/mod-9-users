@@ -13,6 +13,7 @@ if (!empty($fields)) {
 			"id" => $item->id,
 			"name" => $item->name,
 			"value" => $item->value,
+			"placeholder" => $item->placeholder,
 			"required" => ($item->required) ? "check" : "times",
 			"sort" => $item->sort,
 			"status" => ($item->status) ? "check" : "times",
@@ -24,16 +25,21 @@ if (!empty($fields)) {
 	}
 }
 
+if(!isset($list)) {
+	$message = bo3::c2r(["message" => $mdl_lang["message"]["empty"]], bo3::mdl_load("templates/message.tpl"));
+}
+
 $mdl = bo3::c2r([
 	"add-field" => $mdl_lang["fields"]["add"],
 	"name" => $mdl_lang["fields"]["name"],
 	"value" => $mdl_lang["fields"]["value"],
+	"placeholder" => $mdl_lang["fields"]["placeholder"],
 	"type" => $mdl_lang["fields"]["type"],
 	"required" => $mdl_lang["fields"]["required"],
 	"sort" => $mdl_lang["fields"]["sort"],
 	"status" => $mdl_lang["fields"]["status"],
 	"date" => $mdl_lang["fields"]["date"],
-	"list" => (isset($list)) ? $list : $mdl_lang["fields"]["no-results"]
+	"list" => (isset($list)) ? $list : $message
 ], bo3::mdl_load("templates/fields.tpl"));
 
 include "pages/module-core.php";

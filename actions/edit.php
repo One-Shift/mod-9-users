@@ -87,10 +87,10 @@ if(!empty($fields)) {
 		$field_name = strtolower($field->name);
 
 		$list .= bo3::c2r([
-			"name" => $field->name,
-			"lg-name" => $mdl_lang["label"]["{$field_name}"],
+			"name" => strtolower($field->name),
+			"lg-name" => $field->name,
 			"value" => (isset($infos) && !empty($infos->{$field_name})) ? $infos->{$field_name} : "",
-			"ph" => $mdl_lang["placeholder"]["{$field_name}"],
+			"ph" => $field->placeholder,
 			"required" => ($infos->required) ? "required" : ""
 		], $item_tpl);
 	}

@@ -18,6 +18,7 @@ if (count($user_list) != 0) {
 			"email" => $user->email,
 			"rank" => $user->rank,
 			"access" => ($user->rank == "owner" && $authData["rank"] != "owner") ? "d-none" : "",
+			"active" => (!$user->status) ? "unactive" : "",
 			"status" => ($user->status) ? "Active" : "Inactive",
 			"date" => $user->date,
 			"lg-username-title" => $mdl_lang["list"]["username-title"],

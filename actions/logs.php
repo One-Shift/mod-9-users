@@ -26,7 +26,7 @@ $mdl = bo3::c2r([
 	"ip" => $mdl_lang["logs"]["ip"],
 	"date" => $mdl_lang["logs"]["date"],
 	"list" => (isset($logs_list)) ? $logs_list : "",
-	"but-view" => $lang["logs"]["but-view"]
+	"but-view" => $mdl_lang["logs"]["but-view"]
 ], bo3::mdl_load("templates/logs.tpl"));
 
 include "pages/module-core.php";

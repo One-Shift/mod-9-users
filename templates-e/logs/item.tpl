@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<div class="action-list col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
-		<a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/logs-view/{c2r-id}" class="btn btn-view" role="button">
+		<a href="{c2r-mdl-url}logs-view/{c2r-id}" class="btn btn-action btn-view" role="button">
 			<i class="fas fa-eye" aria-hidden="true"></i>
 			<div class="block all-15"></div>
 			{c2r-but-view}
