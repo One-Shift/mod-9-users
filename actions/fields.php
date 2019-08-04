@@ -25,9 +25,15 @@ if (!empty($fields)) {
 	}
 }
 
-if(!isset($list)) {
+if (!isset($list)) {
 	$message = bo3::c2r(["message" => $mdl_lang["message"]["empty"]], bo3::mdl_load("templates/message.tpl"));
 }
+
+$mdl_action_list = bo3::c2r([
+	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+], bo3::mdl_load("templates-e/action-list.tpl"));
 
 $mdl = bo3::c2r([
 	"add-field" => $mdl_lang["fields"]["add"],

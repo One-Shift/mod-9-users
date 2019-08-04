@@ -1,5 +1,6 @@
 <?php
 $message_tpl = bo3::mdl_load("templates-e/message.tpl");
+
 $user = new c9_user();
 
 /*FILLS USER INFO ON THE LEFT SIDE MENU - BEGINS*/
@@ -7,7 +8,7 @@ $user->setId($id);
 
 $userData = $user->returnOneUser();
 
-if($userData->rank == "owner" && $authData["rank"] != "owner") {
+if ($userData->rank == "owner" && $authData["rank"] != "owner") {
 	header("Location: {$cfg->system->path_bo}/{$lg_s}/9-users/");
 }
 
@@ -71,13 +72,13 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 	}
 }/*Verifies if "save" button was clicked - end*/
 
-if(!empty($userData->code)) {
+if (!empty($userData->code)) {
 	$infos = json_decode($userData->code);
 }
 
 $fields = c9_user::returnFields();
 
-if(!empty($fields)) {
+if (!empty($fields)) {
 	foreach ($fields as $f => $field) {
 		if(!isset($list)) {
 			$list = "";
@@ -97,33 +98,12 @@ if(!empty($fields)) {
 }
 
 /* USER CHANGES - ENDS */
-$form = bo3::c2r([
-	"lg-name" => $mdl_lang["edit"]["name"],
-	"lg-email" => $mdl_lang["edit"]["email"],
-	"lg-newpass" => $mdl_lang["edit"]["new_pass"],
-	"lg-confirm" => $mdl_lang["edit"]["confirm"],
-	"lg-rank" => $mdl_lang["edit"]["rank"],
-	"lg-owner" => $mdl_lang["edit"]["owner"],
-	"lg-manager" => $mdl_lang["edit"]["manager"],
-	"lg-member" => $mdl_lang["edit"]["member"],
-	"lg-code" => $mdl_lang["edit"]["code"],
-	"lg-status" => $mdl_lang["edit"]["status"],
-	"btn-save" => $mdl_lang["edit"]["save"],
-	"lg-check-remove" => $mdl_lang["edit"]["sure"],
-	"lg-remove" => $mdl_lang["edit"]["remove"],
-	"lg-auth" => $mdl_lang["edit"]["auth"],
-	"lg-info" => $mdl_lang["edit"]["info"],
 
-	"owner-selected" => (isset($ownerSelected)) ? $ownerSelected : "",
-	"manager-selected" => (isset($managerSelected)) ? $managerSelected : "",
-	"member-selected" => (isset($memberSelected)) ? $memberSelected : "",
-
-	"username" => htmlspecialchars($userData->username),
-	"email" => htmlspecialchars($userData->email),
-	"code" => htmlspecialchars($userData->code),
-	"status-checked" => ($userData->status) ? "checked" : "",
-	"other-info" => (isset($list)) ? $list : ""
-], bo3::mdl_load("templates-e/edit/form.tpl"));
+$mdl_action_list = bo3::c2r([
+	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+], bo3::mdl_load("templates-e/action-list.tpl"));
 
 $mdl = bo3::c2r([
 	"return-message" => (isset($returnMessage)) ? $returnMessage : "",
@@ -131,7 +111,34 @@ $mdl = bo3::c2r([
 	"user-id" => $id,
 	"lg-check-remove" => $mdl_lang["edit"]["sure"],
 	"lg-remove" => $mdl_lang["edit"]["remove"],
-	"form" => $form
+
+	"form" => bo3::c2r([
+		"lg-name" => $mdl_lang["edit"]["name"],
+		"lg-email" => $mdl_lang["edit"]["email"],
+		"lg-newpass" => $mdl_lang["edit"]["new_pass"],
+		"lg-confirm" => $mdl_lang["edit"]["confirm"],
+		"lg-rank" => $mdl_lang["edit"]["rank"],
+		"lg-owner" => $mdl_lang["edit"]["owner"],
+		"lg-manager" => $mdl_lang["edit"]["manager"],
+		"lg-member" => $mdl_lang["edit"]["member"],
+		"lg-code" => $mdl_lang["edit"]["code"],
+		"lg-status" => $mdl_lang["edit"]["status"],
+		"btn-save" => $mdl_lang["edit"]["save"],
+		"lg-check-remove" => $mdl_lang["edit"]["sure"],
+		"lg-remove" => $mdl_lang["edit"]["remove"],
+		"lg-auth" => $mdl_lang["edit"]["auth"],
+		"lg-info" => $mdl_lang["edit"]["info"],
+
+		"owner-selected" => (isset($ownerSelected)) ? $ownerSelected : "",
+		"manager-selected" => (isset($managerSelected)) ? $managerSelected : "",
+		"member-selected" => (isset($memberSelected)) ? $memberSelected : "",
+
+		"username" => htmlspecialchars($userData->username),
+		"email" => htmlspecialchars($userData->email),
+		"code" => htmlspecialchars($userData->code),
+		"status-checked" => ($userData->status) ? "checked" : "",
+		"other-info" => (isset($list)) ? $list : ""
+	], bo3::mdl_load("templates-e/edit/form.tpl"))
 ], bo3::mdl_load("templates/edit.tpl"));
 
 include "pages/module-core.php";

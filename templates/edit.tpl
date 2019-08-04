@@ -7,7 +7,7 @@
 		<form method="post" name="form" id="form" action="{c2r-mdl-url}delete/{c2r-user-id}" enctype="multipart/form-data">
 			<!-- CHECK IF DELETE FIELD-->
 			<div class="tacenter">
-				<button type="submit" class="btn btn-action btn-del" name="remove_btn" id="remove_btn">
+				<button type="submit" class="btn btn-danger" name="remove_btn" id="remove_btn">
 					<i class="fas fa-trash-alt" aria-hidden="true"></i><span class="block all-15"></span>{c2r-lg-remove}
 				</button>
 			</div>

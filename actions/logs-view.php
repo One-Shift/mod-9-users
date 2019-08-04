@@ -27,9 +27,11 @@ if (isset($id) && !empty($id)) {
 		}
 	}
 
-	$breadcrumb = [
-		["name" => "Logs", "link" => "{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/logs/"]
-	];
+	$mdl_action_list = bo3::c2r([
+		"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+		"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+		"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+	], bo3::mdl_load("templates-e/action-list.tpl"));
 
 	$mdl = bo3::c2r([
 		"md5-email" => md5($user->email),

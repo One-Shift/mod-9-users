@@ -1,10 +1,6 @@
 <?php
 
-if(isset($_POST["submit"])) {
-	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-	];
-
+if (isset($_POST["submit"])) {
 	if (c9_user::insertField(
 		$_POST["name"],
 		$_POST["value"],
@@ -34,10 +30,6 @@ if(isset($_POST["submit"])) {
 	header("Refresh:5; url={$cfg->system->path_bo}/{$lg_s}/9-users/fields/");
 
 } else {
-
-	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-	];
 
 	$mdl = bo3::c2r([
 		"name" => $mdl_lang["fields"]["name"],

@@ -79,9 +79,9 @@ if (isset($_POST["save"])) {
 
 $fields = c9_user::returnFields();
 
-if(!empty($fields)) {
+if (!empty($fields)) {
 	foreach ($fields as $f => $field) {
-		if(!isset($list)) {
+		if (!isset($list)) {
 			$list = "";
 			$item_tpl = bo3::mdl_load("templates-e/add/item.tpl");
 		}
@@ -98,29 +98,27 @@ if(!empty($fields)) {
 	}
 }
 
-$form = bo3::c2r([
-	"lg-name" => $mdl_lang["add"]["name"],
-	"lg-email" => $mdl_lang["add"]["email"],
-	"lg-pass" => $mdl_lang["add"]["pass"],
-	"lg-confirm" => $mdl_lang["add"]["confirm"],
-	"lg-rank" => $mdl_lang["add"]["rank"],
-	"lg-owner" => $mdl_lang["add"]["owner"],
-	"lg-manager" => $mdl_lang["add"]["manager"],
-	"lg-member" => $mdl_lang["add"]["member"],
-	"lg-code" => $mdl_lang["add"]["code"],
-	"lg-status" => $mdl_lang["add"]["status"],
-	"lg-auth" => $mdl_lang["add"]["auth"],
-	"lg-info" => $mdl_lang["add"]["info"],
-	"btn-save" => $mdl_lang["add"]["save"],
-	"lg-owner-value" => $mdl_lang["add"]["owner-value"],
-	"lg-manager-value" => $mdl_lang["add"]["manager-value"],
-	"lg-member-value" => $mdl_lang["add"]["member-value"],
-	"other-info" => (isset($list)) ? $list : ""
-], $form_tpl);
-
 $mdl = bo3::c2r([
 	"return-message" => (isset($returnMessage)) ? $returnMessage : "",
-	"adduser-form" => $form
+	"adduser-form" => bo3::c2r([
+		"lg-name" => $mdl_lang["add"]["name"],
+		"lg-email" => $mdl_lang["add"]["email"],
+		"lg-pass" => $mdl_lang["add"]["pass"],
+		"lg-confirm" => $mdl_lang["add"]["confirm"],
+		"lg-rank" => $mdl_lang["add"]["rank"],
+		"lg-owner" => $mdl_lang["add"]["owner"],
+		"lg-manager" => $mdl_lang["add"]["manager"],
+		"lg-member" => $mdl_lang["add"]["member"],
+		"lg-code" => $mdl_lang["add"]["code"],
+		"lg-status" => $mdl_lang["add"]["status"],
+		"lg-auth" => $mdl_lang["add"]["auth"],
+		"lg-info" => $mdl_lang["add"]["info"],
+		"btn-save" => $mdl_lang["add"]["save"],
+		"lg-owner-value" => $mdl_lang["add"]["owner-value"],
+		"lg-manager-value" => $mdl_lang["add"]["manager-value"],
+		"lg-member-value" => $mdl_lang["add"]["member-value"],
+		"other-info" => (isset($list)) ? $list : ""
+	], $form_tpl)
 ], bo3::mdl_load("templates/add.tpl"));
 
 include "pages/module-core.php";

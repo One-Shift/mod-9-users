@@ -1,9 +1,6 @@
 <?php
 
 if (isset($id) && !empty($id)) {
-	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-	];
 
 	$field = c9_user::returnOneField($id);
 

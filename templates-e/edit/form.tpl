@@ -96,7 +96,9 @@
 		</div>
 		<div class="col taright">
 			<div class="spacer all-30"></div>
-			<button type="submit" class="btn btn-save btn-action" name="save" id="save"><i class="fas fa-save" aria-hidden="true"></i><span class="block all-15"></span>{c2r-btn-save}</button>
+			<button type="submit" class="btn btn-success" name="save" id="save">
+				<i class="fas fa-save" aria-hidden="true"></i><span class="block all-15"></span>{c2r-btn-save}
+			</button>
 			<div class="spacer all-30"></div>
 		</div>
 	</div>

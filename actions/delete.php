@@ -1,6 +1,6 @@
 <?php
 	if (isset($id) && !empty($id)) {
-		if($authData["rank"] == "owner") {
+		if ($authData["rank"] == "owner") {
 			$user = new c9_user();
 			$user->setId($id);
 			$toReturn = "";
@@ -33,18 +33,15 @@
 
 				$user = $user->returnOneUser();
 
-				$toReturn = bo3::c2r(
-					[
-						"id" => $id,
+				$toReturn = bo3::c2r([
+					"id" => $id,
 
-						"phrase" => ($authData["id"] != $id) ? $mdl_lang["delete"]["phrase"] : $mdl_lang["delete"]["phrase-self"] ,
-						"name" => $user->username,
+					"phrase" => ($authData["id"] != $id) ? $mdl_lang["delete"]["phrase"] : $mdl_lang["delete"]["phrase-self"] ,
+					"name" => $user->username,
 
-						"del" => $mdl_lang["delete"]["button-del"],
-						"cancel" => $mdl_lang["delete"]["button-cancel"]
-					],
-					bo3::mdl_load("templates-e/delete/form.tpl")
-				);
+					"del" => $mdl_lang["delete"]["button-del"],
+					"cancel" => $mdl_lang["delete"]["button-cancel"]
+				], bo3::mdl_load("templates-e/delete/form.tpl"));
 				$mdl = bo3::c2r(["content" => $toReturn], bo3::mdl_load("templates/del.tpl"));
 			}
 

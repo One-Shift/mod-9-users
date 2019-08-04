@@ -1,9 +1,5 @@
 <?php
 
-$breadcrumb = [
-	["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-];
-
 if (isset($id) && !empty($id)) {
 	// Return all category info
 	$field = new c9_user();
