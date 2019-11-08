@@ -23,7 +23,7 @@ if (count($user_list) != 0) {
 			"username" => $user->username,
 			"email" => $user->email,
 			"rank" => $user->rank,
-			"access" => ($user->rank == "owner" && $authData["rank"] != "owner") ? "d-none" : "",
+			"access" => ($user->rank == "owner" && $authData->rank != "owner") ? "d-none" : "",
 			"active" => (!$user->status) ? "unactive" : "",
 
 			"status" => $user->status ? "Active" : "Inactive",
