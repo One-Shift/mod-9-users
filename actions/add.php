@@ -77,7 +77,7 @@ if (isset($_POST["save"])) {
 	}
 }
 
-$fields = c9_user::returnFields();
+$fields = c9_user::getFields();
 
 if (!empty($fields)) {
 	foreach ($fields as $f => $field) {

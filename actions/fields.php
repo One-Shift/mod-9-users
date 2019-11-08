@@ -1,6 +1,6 @@
 <?php
 
-$fields = c9_user::returnAllFields();
+$fields = c9_user::getAllFields();
 
 if (!empty($fields)) {
 	foreach ($fields as $i => $item) {

@@ -2,7 +2,7 @@
 
 if (isset($id) && !empty($id)) {
 
-	$field = c9_user::returnOneField($id);
+	$field = c9_user::getOneField($id);
 
 	if (isset($_POST["submit"])) {
 		if (c9_user::updateField(

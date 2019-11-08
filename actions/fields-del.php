@@ -24,7 +24,7 @@ if (isset($id) && !empty($id)) {
 			"status" => ($status == TRUE) ? "success" : "danger"
 		], bo3::mdl_load("templates/result.tpl"));
 	} else {
-		$field = $field->returnOneField($id);
+		$field = $field->getOneField($id);
 
 		$toReturn = bo3::c2r([
 			"id" => $id,
