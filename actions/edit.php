@@ -5,10 +5,9 @@ $user = new c9_user();
 
 /*FILLS USER INFO ON THE LEFT SIDE MENU - BEGINS*/
 $user->setId($id);
-
 $userData = $user->returnOneUser();
 
-if ($userData->rank == "owner" && $authData->rank != "owner") {
+if (($userData->rank == "owner" && $authData->rank != "owner") || ($authData->rank != "owner" && $userData->id != $authData->id)) {
 	header("Location: {$cfg->system->path_bo}/{$lg_s}/9-users/");
 }
 
@@ -27,8 +26,8 @@ if ($userData->rank == "owner") {
 
 /*USER CHANGES - BEGINS*/
 
-if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
-	if ($_POST["inputName"] != null || $_POST["inputEmail"] != null || $_POST["inputNewpass"] != null || $_POST["inputCode"] != null) {
+if (isset($_POST["save"])) {
+	if ($_POST["inputName"] != null || $_POST["inputEmail"] != null || $_POST["inputNewpass"] != null || $_POST["inputConfirm"] != null) {
 		if (!isset($_POST["inputStatus"]) || empty($_POST["inputStatus"])) {
 			$_POST["inputStatus"] = "0";
 		}
@@ -41,7 +40,17 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 		$user->setUserKey($userData->user_key);
 		$user->setDate($userData->date);
 		$user->setDateUpdate();
-		$user->setOldPassword($userData->password);
+
+		if (isset($_POST["inputNewpass"]) && !empty($_POST["inputNewpass"])) {
+			if (isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && $_POST["inputConfirm"] == $_POST["inputNewpass"]) {
+				$user->setPassword($_POST["inputNewpass"]);
+			} else {
+				$returnMessage = bo3::c2r([
+					"message-type" => "danger",
+					"lg-message" => $mdl_lang["edit"]["no-match"]
+				], $message_tpl);
+			}
+		}
 
 		if ($user->update()) {
 			$userData = $user->returnOneUser();
@@ -57,20 +66,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 			], $message_tpl);
 		}
 	}
-
-/*PASSWORD*/
-
-	if (isset($_POST["inputNewpass"]) && !empty($_POST["inputNewpass"])) {
-		if (isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && $_POST["inputConfirm"] == $_POST["inputNewpass"]) {
-			$user->setPassword($_POST["inputNewpass"]);
-		} else {
-			$returnMessage = bo3::c2r([
-				"message-type" => "danger",
-				"lg-message" => $mdl_lang["edit"]["no-match"]
-			], $message_tpl);
-		}
-	}
-}/*Verifies if "save" button was clicked - end*/
+}
 
 if (!empty($userData->code)) {
 	$infos = json_decode($userData->code);
@@ -101,8 +97,9 @@ if (!empty($fields)) {
 
 $mdl_action_list = bo3::c2r([
 	"lg-list-btn" => $mdl_lang["list"]["list-btn"],
-	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
 	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-add-field-btn" => $mdl_lang["list"]["add-field-btn"],
 	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
 ], bo3::mdl_load("templates-e/action-list.tpl"));
 
