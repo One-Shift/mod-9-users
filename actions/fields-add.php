@@ -1,5 +1,13 @@
 <?php
 
+$mdl_action_list = bo3::c2r([
+	"lg-list-btn" => $mdl_lang["list"]["list-btn"],
+	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-add-field-btn" => $mdl_lang["list"]["add-field-btn"],
+	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+], bo3::mdl_load("templates-e/action-list.tpl"));
+
 if (isset($_POST["submit"])) {
 	if (c9_user::insertField(
 		$_POST["name"],

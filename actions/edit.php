@@ -8,7 +8,7 @@ $user->setId($id);
 
 $userData = $user->returnOneUser();
 
-if ($userData->rank == "owner" && $authData["rank"] != "owner") {
+if ($userData->rank == "owner" && $authData->rank != "owner") {
 	header("Location: {$cfg->system->path_bo}/{$lg_s}/9-users/");
 }
 
@@ -76,7 +76,7 @@ if (!empty($userData->code)) {
 	$infos = json_decode($userData->code);
 }
 
-$fields = c9_user::returnFields();
+$fields = c9_user::getFields();
 
 if (!empty($fields)) {
 	foreach ($fields as $f => $field) {
@@ -100,6 +100,7 @@ if (!empty($fields)) {
 /* USER CHANGES - ENDS */
 
 $mdl_action_list = bo3::c2r([
+	"lg-list-btn" => $mdl_lang["list"]["list-btn"],
 	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
 	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
 	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],

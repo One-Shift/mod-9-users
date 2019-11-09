@@ -23,7 +23,7 @@ if (count($user_list) != 0) {
 			"username" => $user->username,
 			"email" => $user->email,
 			"rank" => $user->rank,
-			"access" => ($user->rank == "owner" && $authData->rank != "owner") ? "d-none" : "",
+			"access" => ($user->rank == "owner" && $authData->rank != "owner") ? "disabled" : "",
 			"active" => (!$user->status) ? "unactive" : "",
 
 			"status" => $user->status ? "Active" : "Inactive",
@@ -37,8 +37,10 @@ if (count($user_list) != 0) {
 /*----------------------------------------------------- FETCHING USER DATA FROM DATABASE - ENDS	 -----------------------------------------------------*/
 
 $mdl_action_list = bo3::c2r([
-	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-list-btn" => $mdl_lang["list"]["list-btn"],
 	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-add-field-btn" => $mdl_lang["list"]["add-field-btn"],
 	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
 ], bo3::mdl_load("templates-e/action-list.tpl"));
 
