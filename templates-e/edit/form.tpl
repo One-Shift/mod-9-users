@@ -1,11 +1,11 @@
 <form class="w-100" method="post" name="form" id="form" enctype="multipart/form-data">
 	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 		<li class="nav-item">
-			<a class="nav-link active btn btn-action" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{c2r-lg-info}</a>
+			<a class="au-btn au-btn-icon au-btn--default active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{c2r-lg-info}</a>
 		</li>
 		<span class="block all-15"></span>
 		<li class="nav-item">
-			<a class="nav-link btn btn-action" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{c2r-lg-auth}</a>
+			<a class="au-btn au-btn-icon au-btn--default" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{c2r-lg-auth}</a>
 		</li>
 	</ul>
 	<div class="tab-content" id="pills-tabContent">
@@ -96,7 +96,7 @@
 		</div>
 		<div class="col taright">
 			<div class="spacer all-30"></div>
-			<button type="submit" class="btn btn-success" name="save" id="save">
+			<button type="submit" class="au-btn au-btn-icon au-btn--green" name="save" id="save">
 				<i class="fas fa-save" aria-hidden="true"></i><span class="block all-15"></span>{c2r-btn-save}
 			</button>
 			<div class="spacer all-30"></div>

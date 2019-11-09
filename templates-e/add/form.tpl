@@ -1,11 +1,11 @@
 <form class="w-100" action="{c2r-mdl-url}add/" method="post" name="form" id="form" enctype="multipart/form-data">
 	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 		<li class="nav-item">
-			<a class="nav-link active btn btn-action" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{c2r-lg-info}</a>
+			<a class="au-btn au-btn-icon au-btn--default active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{c2r-lg-info}</a>
 		</li>
 		<span class="block all-15"></span>
 		<li class="nav-item">
-			<a class="nav-link btn btn-action" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{c2r-lg-auth}</a>
+			<a class="au-btn au-btn-icon au-btn--default" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{c2r-lg-auth}</a>
 		</li>
 	</ul>
 	<div class="tab-content" id="pills-tabContent">
@@ -34,7 +34,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="spacer all-15"></div>
 			<div class="row">
 				<div class="col">
 					<!-- RANK FIELD-->
@@ -51,7 +50,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="spacer all-30"></div>
+			<div class="spacer all-15"></div>
 			<div class="row">
 				<div class="col">
 					{c2r-other-info}
@@ -87,7 +86,6 @@
 	<div class="row">
 		<div class="col taleft">
 			<div class="form-group">
-				<div class="spacer all-30"></div>
 				<div class="bo3-form-control custom-control custom-checkbox">
 					<input type="checkbox" id="inputStatus" class="custom-control-input" name="inputStatus" {c2r-status-checked}/>
 					<label class="custom-control-label" for="inputStatus">{c2r-lg-status}</label>
@@ -95,8 +93,7 @@
 			</div>
 		</div>
 		<div class="col taright">
-			<div class="spacer all-30"></div>
-			<button type="submit" class="btn btn-save btn-action" name="save" id="save"><i class="fas fa-save" aria-hidden="true"></i><span class="block all-15"></span>{c2r-btn-save}</button>
+			<button type="submit" class="au-btn au-btn-icon au-btn--green" name="save" id="save"><i class="fas fa-save" aria-hidden="true"></i><span class="block all-15"></span>{c2r-btn-save}</button>
 			<div class="spacer all-30"></div>
 		</div>
 	</div>

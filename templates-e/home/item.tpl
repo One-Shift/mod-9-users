@@ -11,10 +11,10 @@
 			<hr>
 			<div class="card-text text-sm-center">
 				<a href="{c2r-mdl-url}edit/{c2r-user-id}" class="btn btn-edit btn-action {c2r-access} bg-{c2r-rank}" role="button" title="{c2r-lg-edit}">
-					<i class="fas fa-pencil-alt" aria-hidden="true"></i>
+					<i class="zmdi zmdi-edit" aria-hidden="true"></i>
 				</a>
 				<a href="{c2r-mdl-url}delete/{c2r-user-id}" class="btn btn-action btn-del {c2r-access}" role="button" title="{c2r-lg-edit}">
-					<i class="fas fa-trash-alt" aria-hidden="true"></i>
+					<i class="zmdi zmdi-delete" aria-hidden="true"></i>
 				</a>
 			</div>
 		</div>
