@@ -1,6 +1,15 @@
 <?php
 	if (isset($id) && !empty($id)) {
-		if($authData["rank"] == "owner") {
+
+		$mdl_action_list = bo3::c2r([
+			"lg-list-btn" => $mdl_lang["list"]["list-btn"],
+			"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+			"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+			"lg-add-field-btn" => $mdl_lang["list"]["add-field-btn"],
+			"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+		], bo3::mdl_load("templates-e/action-list.tpl"));
+
+		if ($authData["rank"] == "owner") {
 			$user = new c9_user();
 			$user->setId($id);
 			$toReturn = "";
@@ -33,18 +42,15 @@
 
 				$user = $user->returnOneUser();
 
-				$toReturn = bo3::c2r(
-					[
-						"id" => $id,
+				$toReturn = bo3::c2r([
+					"id" => $id,
 
-						"phrase" => ($authData["id"] != $id) ? $mdl_lang["delete"]["phrase"] : $mdl_lang["delete"]["phrase-self"] ,
-						"name" => $user->username,
+					"phrase" => ($authData["id"] != $id) ? $mdl_lang["delete"]["phrase"] : $mdl_lang["delete"]["phrase-self"] ,
+					"name" => $user->username,
 
-						"del" => $mdl_lang["delete"]["button-del"],
-						"cancel" => $mdl_lang["delete"]["button-cancel"]
-					],
-					bo3::mdl_load("templates-e/delete/form.tpl")
-				);
+					"del" => $mdl_lang["delete"]["button-del"],
+					"cancel" => $mdl_lang["delete"]["button-cancel"]
+				], bo3::mdl_load("templates-e/delete/form.tpl"));
 				$mdl = bo3::c2r(["content" => $toReturn], bo3::mdl_load("templates/del.tpl"));
 			}
 

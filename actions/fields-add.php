@@ -1,10 +1,14 @@
 <?php
 
-if(isset($_POST["submit"])) {
-	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-	];
+$mdl_action_list = bo3::c2r([
+	"lg-list-btn" => $mdl_lang["list"]["list-btn"],
+	"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+	"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+	"lg-add-field-btn" => $mdl_lang["list"]["add-field-btn"],
+	"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+], bo3::mdl_load("templates-e/action-list.tpl"));
 
+if (isset($_POST["submit"])) {
 	if (c9_user::insertField(
 		$_POST["name"],
 		$_POST["value"],
@@ -34,10 +38,6 @@ if(isset($_POST["submit"])) {
 	header("Refresh:5; url={$cfg->system->path_bo}/{$lg_s}/9-users/fields/");
 
 } else {
-
-	$breadcrumb = [
-		["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-	];
 
 	$mdl = bo3::c2r([
 		"name" => $mdl_lang["fields"]["name"],

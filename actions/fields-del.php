@@ -1,10 +1,15 @@
 <?php
 
-$breadcrumb = [
-	["name" => "Fields", "link" => "{c2r-mdl-url}fields/"]
-];
-
 if (isset($id) && !empty($id)) {
+
+	$mdl_action_list = bo3::c2r([
+		"lg-list-btn" => $mdl_lang["list"]["list-btn"],
+		"lg-fields-btn" => $mdl_lang["list"]["fields-btn"],
+		"lg-add-btn" => $mdl_lang["list"]["add-btn"],
+		"lg-add-field-btn" => $mdl_lang["list"]["add-field-btn"],
+		"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
+	], bo3::mdl_load("templates-e/action-list.tpl"));
+
 	// Return all category info
 	$field = new c9_user();
 	$toReturn = "";
@@ -28,7 +33,7 @@ if (isset($id) && !empty($id)) {
 			"status" => ($status == TRUE) ? "success" : "danger"
 		], bo3::mdl_load("templates/result.tpl"));
 	} else {
-		$field = $field->returnOneField($id);
+		$field = $field->getOneField($id);
 
 		$toReturn = bo3::c2r([
 			"id" => $id,
