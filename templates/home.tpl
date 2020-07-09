@@ -1,6 +1,6 @@
 <div class="row">
-	{c2r-list}
+	{{ list }}
 </div>
 <div class="spacer all-30"></div>
 
-<link rel="stylesheet" href="{c2r-mdl-path}site-assets/css/style.css">
+<link rel="stylesheet" href="{{ mdl-path }}site-assets/css/style.css">
