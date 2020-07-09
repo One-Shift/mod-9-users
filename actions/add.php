@@ -55,7 +55,7 @@ if (isset($_POST["save"])) {
 	if (isset($password_success) && isset($email_success) && isset($username_success) && $mail_exists == FALSE && $user_exists == FALSE) {
 		$user->setRank($_POST["inputRank"]);
 		$user->setCode((isset($_POST["info"]) && !empty($_POST["info"])) ? json_encode($_POST["info"], JSON_UNESCAPED_UNICODE) : "");
-		$user->setStatus($_POST["inputStatus"]);
+		$user->setStatus((isset($_POST["inputStatus"]) && $_POST["inputStatus"] === "on" ? TRUE : FALSE));
 		$user->setDate();
 		$user->setDateUpdate();
 		$user->setUserKey();
