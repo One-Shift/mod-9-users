@@ -7,7 +7,7 @@ CREATE TABLE `{c2r-prefix}_9_users` (
 	`rank` enum('owner','manager','member') DEFAULT 'member',
 	`email` varchar(255) DEFAULT NULL,
 	`code` text,
-	`custom_css` text NOT NULL,
+	`custom_css` text DEFAULT NULL,
 	`user_key` text,
 	`status` tinyint(1) NOT NULL DEFAULT '0',
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

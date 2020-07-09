@@ -11,26 +11,28 @@ if (count($user_list) != 0) {
 			$item_tpl = bo3::mdl_load("templates-e/home/item.tpl");
 		}
 
-		$list .= bo3::c2r([
-			"lg-username-title" => $mdl_lang["list"]["username-title"],
-			"lg-email-title" => $mdl_lang["list"]["email-title"],
-			"lg-rank-title" => $mdl_lang["list"]["rank-title"],
-			"lg-status-title" => $mdl_lang["list"]["status-title"],
-			"lg-date-title" => $mdl_lang["list"]["date-title"],
-
-			"user-id" => $user->id,
-			"md5-mail" => md5($user->email),
-			"username" => $user->username,
-			"email" => $user->email,
-			"rank" => $user->rank,
-			"access" => (($user->rank == "owner" && $authData->rank != "owner") || ($authData->rank != "owner" && $user->id != $authData->id)) ? "disabled" : "",
-			"active" => (!$user->status) ? "unactive" : "",
-
-			"status" => $user->status ? "Active" : "Inactive",
-			"status-label" => $user->status ? 'success' : 'secondary',
-
-			"date" => $user->date
-		], $item_tpl);
+		if($user->id !== $authData->id) {
+			$list .= bo3::c2r([
+				"lg-username-title" => $mdl_lang["list"]["username-title"],
+				"lg-email-title" => $mdl_lang["list"]["email-title"],
+				"lg-rank-title" => $mdl_lang["list"]["rank-title"],
+				"lg-status-title" => $mdl_lang["list"]["status-title"],
+				"lg-date-title" => $mdl_lang["list"]["date-title"],
+	
+				"user-id" => $user->id,
+				"md5-mail" => md5($user->email),
+				"username" => $user->username,
+				"email" => $user->email,
+				"rank" => $user->rank,
+				"access" => (($user->rank == "owner" && $authData->rank != "owner") || ($authData->rank != "owner" && $user->id != $authData->id)) ? "disabled" : "",
+				"active" => (!$user->status) ? "unactive" : "",
+	
+				"status" => $user->status ? "Active" : "Inactive",
+				"status-label" => $user->status ? 'success' : 'secondary',
+	
+				"date" => $user->date
+			], $item_tpl);
+		}
 	}
 }
 

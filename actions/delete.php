@@ -9,7 +9,7 @@
 			"lg-logs-btn" => $mdl_lang["list"]["logs-btn"],
 		], bo3::mdl_load("templates-e/action-list.tpl"));
 
-		if ($authData["rank"] == "owner") {
+		if ($authData->rank == "owner") {
 			$user = new c9_user();
 			$user->setId($id);
 			$toReturn = "";
@@ -45,7 +45,7 @@
 				$toReturn = bo3::c2r([
 					"id" => $id,
 
-					"phrase" => ($authData["id"] != $id) ? $mdl_lang["delete"]["phrase"] : $mdl_lang["delete"]["phrase-self"] ,
+					"phrase" => ($authData->id != $id) ? $mdl_lang["delete"]["phrase"] : $mdl_lang["delete"]["phrase-self"] ,
 					"name" => $user->username,
 
 					"del" => $mdl_lang["delete"]["button-del"],
