@@ -88,7 +88,7 @@
 		<div class="col taleft">
 			<div class="form-group">
 				<div class="spacer all-30"></div>
-				<div class="bo3-form-control custom-control custom-checkbox">
+				<div class="bo3-form-control custom-control custom-checkbox {c2r-action}">
 					<input type="checkbox" id="inputStatus" class="custom-control-input" name="inputStatus" {c2r-status-checked}/>
 					<label class="custom-control-label" for="inputStatus">{c2r-lg-status}</label>
 				</div>

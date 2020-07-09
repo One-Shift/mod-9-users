@@ -27,16 +27,16 @@ if ($userData->rank == "owner") {
 /*USER CHANGES - BEGINS*/
 
 if (isset($_POST["save"])) {
-	if ($_POST["inputName"] != null || $_POST["inputEmail"] != null || $_POST["inputNewpass"] != null || $_POST["inputConfirm"] != null) {
-		if (!isset($_POST["inputStatus"]) || empty($_POST["inputStatus"])) {
-			$_POST["inputStatus"] = "0";
+	if ($_POST["inputName"] != null || $_POST["inputEmail"] != null) {
+		if ($userData->id === $authData->id) {
+			$_POST["inputStatus"] = "on";
 		}
 
 		$user->setUsername($_POST["inputName"]);
 		$user->setEmail($_POST["inputEmail"]);
 		$user->setRank(strtolower($_POST['inputRank']));
-		$user->setCode((isset($_POST["info"]) && !empty($_POST["info"])) ? json_encode($_POST["info"], JSON_UNESCAPED_UNICODE) : "");
-		$user->setStatus($_POST["inputStatus"]);
+		$user->setCode((isset($_POST["info"]) && !empty($_POST["info"])) ? json_encode($_POST["info"], JSON_UNESCAPED_UNICODE) : '');
+		$user->setStatus((isset($_POST["inputStatus"]) && $_POST["inputStatus"] === "on" ? TRUE : FALSE));
 		$user->setUserKey($userData->user_key);
 
 		// PASSWORD UPDATE START
@@ -52,6 +52,8 @@ if (isset($_POST["save"])) {
 					"lg-message" => $mdl_lang["edit"]["no-match"]
 				], $message_tpl);
 			}
+		} else {
+			$user->setOldPassword($userData->password);
 		}
 		// PASSWORD UPDATE END
 
@@ -138,7 +140,8 @@ $mdl = bo3::c2r([
 		"email" => htmlspecialchars($userData->email),
 		"code" => htmlspecialchars($userData->code),
 		"status-checked" => ($userData->status) ? "checked" : "",
-		"other-info" => (isset($list)) ? $list : ""
+		"other-info" => (isset($list)) ? $list : "",
+		"action" => $userData->id === $authData->id ? "no-edit" : ""
 	], bo3::mdl_load("templates-e/edit/form.tpl"))
 ], bo3::mdl_load("templates/edit.tpl"));
 
