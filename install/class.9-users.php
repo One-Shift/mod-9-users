@@ -76,12 +76,6 @@ class c9_user {
 	/** @param string */
 	public function setUserKey() {$this->user_key = md5("{$this->username}+{$this->email}+{$this->date}+{$this->date_update}");}
 
-	/** @param DateTime */
-	public function setDate($d = null) {$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
-
-	/** @param DateTime */
-	public function setDateUpdate($d = null) {$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
-
 	/** === CRUD Functions === */
 
 	/** [Insert new user in DB] @return boolean */
