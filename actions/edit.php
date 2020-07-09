@@ -38,11 +38,13 @@ if (isset($_POST["save"])) {
 		$user->setCode((isset($_POST["info"]) && !empty($_POST["info"])) ? json_encode($_POST["info"], JSON_UNESCAPED_UNICODE) : "");
 		$user->setStatus($_POST["inputStatus"]);
 		$user->setUserKey($userData->user_key);
-		$user->setDate($userData->date);
-		$user->setDateUpdate();
 
+		// PASSWORD UPDATE START
 		if (isset($_POST["inputNewpass"]) && !empty($_POST["inputNewpass"])) {
-			if (isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && $_POST["inputConfirm"] == $_POST["inputNewpass"]) {
+			if (
+				isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && 
+				$_POST["inputConfirm"] == $_POST["inputNewpass"]
+			) {
 				$user->setPassword($_POST["inputNewpass"]);
 			} else {
 				$returnMessage = bo3::c2r([
@@ -51,6 +53,7 @@ if (isset($_POST["save"])) {
 				], $message_tpl);
 			}
 		}
+		// PASSWORD UPDATE END
 
 		if ($user->update()) {
 			$userData = $user->returnOneUser();
