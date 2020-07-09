@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-		<p class="bg-{c2r-message-type} messageBox">{c2r-lg-message}</p>
+		<p class="bg-{{ message-type }} messageBox">{{ lg-message }}</p>
 	</div>
 </div>
 

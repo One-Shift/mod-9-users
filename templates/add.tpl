@@ -1,8 +1,8 @@
-{c2r-return-message}
+{{ return-message }}
 
 <div class="spacer all-30"></div>
 <div class="card">
 	<div class="card-body">
-		{c2r-adduser-form}
+		{{ adduser-form }}
 	</div>
 </div>
