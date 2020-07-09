@@ -159,3 +159,12 @@
 	right: 0;
 	bottom: 0;
 } */
+
+.no-edit {
+	pointer-events: none;
+}
+
+.no-edit .custom-control-input:checked ~ .no-edit .custom-control-label::before {
+	border-color: #4d4d4d;
+	background-color: #4d4d4d;
+}
