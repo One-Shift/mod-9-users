@@ -8,25 +8,25 @@
 						<strong>#</strong>
 					</div>
 					<div class="block col-sm-2">
-						<strong>{c2r-name}</strong>
+						<strong>{{ name }}</strong>
 					</div>
 					<div class="block col-sm-2">
-						<strong>{c2r-value}</strong>
+						<strong>{{ value }}</strong>
 					</div>
 					<div class="block col-sm-2">
-						<strong>{c2r-placeholder}</strong>
+						<strong>{{ placeholder }}</strong>
 					</div>
 					<div class="block col-sm-1 tacenter">
-						<strong>{c2r-required}</strong>
+						<strong>{{ required }}</strong>
 					</div>
 					<div class="block col-sm-1 tacenter">
-						<strong>{c2r-sort}</strong>
+						<strong>{{ sort }}</strong>
 					</div>
 					<div class="block col-sm-1 tacenter">
-						<strong>{c2r-status}</strong>
+						<strong>{{ status }}</strong>
 					</div>
 					<div class="block col-sm-2 tacenter">
-						<strong>{c2r-date}</strong>
+						<strong>{{ date }}</strong>
 					</div>
 				</div>
 			</div>
@@ -34,6 +34,6 @@
 				<strong>Actions</strong>
 			</div>
 		</div>
-		{c2r-list}
+		{{ list }}
 	</div>
 </div>

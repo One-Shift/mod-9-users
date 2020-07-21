@@ -1,4 +1,4 @@
-DELETE FROM `{c2r-prefix}_modules` WHERE `folder` = '{c2r-mod-folder}';
+DELETE FROM `{{ prefix }}_modules` WHERE `folder` = '{{ mod-folder }}';
 
-DROP TABLE IF EXISTS `{c2r-prefix}_9_users`;
-DROP TABLE IF EXISTS `{c2r-prefix}_9_users_fields`;
+DROP TABLE IF EXISTS `{{ prefix }}_9_users`;
+DROP TABLE IF EXISTS `{{ prefix }}_9_users_fields`;

@@ -71,7 +71,7 @@ class c9_user {
 	public function setCustomCss($c) {$this->custom_css = $c;}
 
 	/** @param boolean */
-	public function setStatus($s = null) {$this->status = !is_null($s) ? TRUE : FALSE;}
+	public function setStatus($s = null) {$this->status = !is_null($s) ? $s : FALSE;}
 
 	/** @param string */
 	public function setUserKey() {$this->user_key = md5("{$this->username}+{$this->email}+{$this->date}+{$this->date_update}");}
@@ -99,7 +99,7 @@ class c9_user {
 	public function update() {
 		global $cfg, $db;
 
-		return $db->query(spritnf(
+		return $db->query(sprintf(
 			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s' WHERE id = %d",
 			$cfg->db->prefix,
 			$this->username,
@@ -111,8 +111,6 @@ class c9_user {
 			$this->user_key,
 			$this->id
 		));
-
-		return $db->query($query);
 	}
 
 	/** [Update custom CSS of a user by given ID] @return boolean */

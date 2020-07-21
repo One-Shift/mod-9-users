@@ -4,14 +4,14 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>{c2r-lg-user}</th>
-					<th>{c2r-lg-ip}</th>
-					<th>{c2r-lg-date}</th>
-					<th>{c2r-lg-actions}</th>
+					<th>{{ lg-user }}</th>
+					<th>{{ lg-ip }}</th>
+					<th>{{ lg-date }}</th>
+					<th>{{ lg-actions }}</th>
 				</tr>
 			</thead>
 			<tbody>
-				{c2r-list}
+				{{ list }}
 			</tbody>
 		</table>
 	</div>
