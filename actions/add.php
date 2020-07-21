@@ -56,8 +56,6 @@ if (isset($_POST["save"])) {
 		$user->setRank($_POST["inputRank"]);
 		$user->setCode((isset($_POST["info"]) && !empty($_POST["info"])) ? json_encode($_POST["info"], JSON_UNESCAPED_UNICODE) : "");
 		$user->setStatus((isset($_POST["inputStatus"]) && $_POST["inputStatus"] === "on" ? TRUE : FALSE));
-		$user->setDate();
-		$user->setDateUpdate();
 		$user->setUserKey();
 
 		/*----------------------------VERIFICATIONS ENDS----------------------------*/
