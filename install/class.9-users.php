@@ -83,7 +83,7 @@ class c9_user {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `custom_css`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', '', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
